@@ -17,34 +17,35 @@
   Bundle "git://github.com/ervandew/supertab.git"
   Bundle "git://github.com/tomtom/tcomment_vim.git"
   Bundle "git://github.com/michaeljsmith/vim-indent-object.git"
-  Bundle "git://github.com/tsaleh/vim-matchit.git"
+  Bundle "matchit.zip"
   Bundle "git://github.com/kana/vim-textobj-user.git"
   Bundle "git://github.com/nelstrom/vim-textobj-rubyblock.git"
   Bundle "git://github.com/tpope/vim-repeat.git"
   Bundle "git://github.com/vim-scripts/ruby-matchit.git"
   Bundle "git://github.com/wgibbs/vim-irblack.git"
 " Bundle "git://github.com/wavded/vim-stylus.git"
-  Bundle "git@github.com:tpope/vim-abolish.git"
-  Bundle "git@github.com:christoomey/vim-tmux-navigator.git"
+  Bundle "git://github.com/tpope/vim-abolish.git"
+  Bundle "git://github.com/christoomey/vim-tmux-navigator.git"
+  Bundle "git://github.com/klen/python-mode.git"
 
 " Dash Searching"
-  Bundle "git@github.com:rizzatti/funcoo.vim.git"
-  Bundle "git@github.com:rizzatti/dash.vim.git"
+  Bundle "git://github.com/rizzatti/funcoo.vim.git"
+  Bundle "git://github.com/rizzatti/dash.vim.git"
     nmap <Leader>qs <Plug>DashSearch
     nmap <Leader>qa <Plug>DashGlobalSearch
 
 
 " CtrlP - with FuzzyFinder compatible keymaps
   Bundle "git://github.com/kien/ctrlp.vim.git"
-    nnoremap <Leader>b :<C-U>CtrlPBuffer<CR>
-    nnoremap <Leader>t :<C-U>CtrlP<CR>
-    nnoremap <Leader>T :<C-U>CtrlPTag<CR>
-    let g:ctrlp_prompt_mappings = {
-        \ 'PrtSelectMove("j")':   ['<down>'],
-        \ 'PrtSelectMove("k")':   ['<up>'],
-        \ 'AcceptSelection("h")': ['<c-j>'],
-        \ 'AcceptSelection("v")': ['<c-k>', '<RightMouse>'],
-        \ }
+    " nnoremap <Leader>b :<C-U>CtrlPBuffer<CR>
+    " nnoremap <Leader>t :<C-U>CtrlP<CR>
+    " nnoremap <Leader>T :<C-U>CtrlPTag<CR>
+    " let g:ctrlp_prompt_mappings = {
+    "     \ 'PrtSelectMove("j")':   ['<down>'],
+    "     \ 'PrtSelectMove("k")':   ['<up>'],
+    "     \ 'AcceptSelection("h")': ['<c-j>'],
+    "     \ 'AcceptSelection("v")': ['<c-k>', '<RightMouse>'],
+    "     \ }
     " respect the .gitignore
     let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . --cached --exclude-standard --others']
 
@@ -223,7 +224,6 @@
   Bundle "git://github.com/tpope/vim-fireplace.git"
   Bundle "git://github.com/tpope/vim-classpath.git"
   Bundle "git://github.com/guns/vim-clojure-static.git"
-  Bundle "git://github.com/vim-scripts/paredit.vim"
   Bundle "git@github.com:amdt/vim-niji.git"
   autocmd BufNewFile,BufRead *.clj set filetype=clojure
   autocmd BufNewFile,BufRead *.edn set filetype=clojure

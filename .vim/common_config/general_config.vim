@@ -20,10 +20,6 @@
 " scroll the window when we get near the edge
   set scrolloff=4 sidescrolloff=10
 
-" use 2 spaces for tabs
-  set expandtab tabstop=2 softtabstop=2 shiftwidth=2
-  set smarttab
-
 " enable line numbers, and don't make them any wider than necessary
   set number numberwidth=2
 
@@ -116,3 +112,32 @@
 
 " different color for each paren pairs
 let vimclojure#ParenRainbow  = 1
+
+" keep track of the status bar highlight mode (optimization)
+let g:bar_mode = 0
+
+" change status line color depending on the state of the buffer
+  function! ColorizeStatusLine(...)
+    if a:0 && a:1 == "i" && g:bar_mode != -1
+      let g:bar_mode = -1
+      highlight StatusLine cterm=NONE ctermbg=cyan ctermfg=white guibg=cyan  guifg=white
+    else
+      if &l:modified == g:bar_mode
+        return
+      else
+        if &l:modified
+          highlight StatusLine ctermbg=red ctermfg=white guibg=red  guifg=white
+        else
+          highlight StatusLine cterm=NONE ctermbg=black ctermfg=gray guibg=black  guifg=gray
+        endif
+
+        let g:bar_mode = &l:modified
+      endif
+    endif
+  endfunction
+
+  augroup hi_statusline
+    autocmd!
+    autocmd InsertEnter * call ColorizeStatusLine("i")
+    autocmd InsertLeave,CursorMoved,BufReadPost,BufWritePost * call ColorizeStatusLine()
+  augroup END
