@@ -11,12 +11,12 @@ autocmd FileType python setlocal softtabstop=2           " <BS> over an autoinde
 autocmd FileType python setlocal expandtab               " Use spaces, not tabs, for autoindent/tab key.
 
 " indents - Python
-" autocmd FileType python setlocal nowrap                  " don't wrap text
-" autocmd FileType python setlocal autoindent              " always set autoindenting on
-" autocmd FileType python setlocal tabstop=4               " <tab> inserts 4 spaces 
-" autocmd FileType python setlocal shiftwidth=4            " but an indent level is 2 spaces wide.
-" autocmd FileType python setlocal softtabstop=4           " <BS> over an autoindent deletes both spaces.
-" autocmd FileType python setlocal expandtab               " Use spaces, not tabs, for autoindent/tab key.
+autocmd FileType python setlocal nowrap                  " don't wrap text
+autocmd FileType python setlocal autoindent              " always set autoindenting on
+autocmd FileType python setlocal tabstop=4               " <tab> inserts 4 spaces 
+autocmd FileType python setlocal shiftwidth=4            " but an indent level is 2 spaces wide.
+autocmd FileType python setlocal softtabstop=4           " <BS> over an autoindent deletes both spaces.
+autocmd FileType python setlocal expandtab               " Use spaces, not tabs, for autoindent/tab key.
 " Superseeded by pymode indents
 
 " indents - javascript
