@@ -5,6 +5,7 @@
   syntax on
 
 " default color scheme
+  set t_Co=256
   set background=dark
   color twilight2
 
@@ -19,6 +20,10 @@
 
 " scroll the window when we get near the edge
   set scrolloff=4 sidescrolloff=10
+
+" use 2 spaces for tabs
+  set expandtab tabstop=2 softtabstop=2 shiftwidth=2
+  set smarttab
 
 " enable line numbers, and don't make them any wider than necessary
   set number numberwidth=2
