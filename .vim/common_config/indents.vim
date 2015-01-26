@@ -17,7 +17,6 @@ autocmd FileType python setlocal tabstop=4               " <tab> inserts 4 space
 autocmd FileType python setlocal shiftwidth=4            " but an indent level is 2 spaces wide.
 autocmd FileType python setlocal softtabstop=4           " <BS> over an autoindent deletes both spaces.
 autocmd FileType python setlocal expandtab               " Use spaces, not tabs, for autoindent/tab key.
-" Superseeded by pymode indents
 
 " indents - javascript
 autocmd FileType javascript setlocal nowrap                  " don't wrap text
