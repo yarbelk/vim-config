@@ -34,9 +34,6 @@
 " highlight the search matches
   set hlsearch
 
-" searching is case insensitive when all lowercase
-  set ignorecase smartcase
-
 " assume the /g flag on substitutions to replace all matches in a line
   set gdefault
 
