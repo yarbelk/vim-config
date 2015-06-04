@@ -38,8 +38,16 @@ Customizations can be added to the folder `.vim/custom_preconfig/` or `.vim/cust
 
 The custom_preconfig settings are loaded prior to the common config. A common usecase for this is to reset mapleader.  Most of the rest of the customizations are placed in custom_config.
 
-You can add custom plugins by registering them in a `.vim` file in the custom_config folder with the same `NeoBundle "plugin-repo-url"`
-syntax used in the `.vim/common_config/plugin_config.vim`, and then performing steps 3 & 4 from the install steps above.
+You can add custom plugins by registering them in a `.vim` file in the custom_config folder with the following syntax, and then performing steps 3 & 4 from the install steps above.
+
+```vim
+" Custom plugins must be registered within a neobundle#append()/neobundle#end() block
+call neobundle#append()
+
+NeoBundle '<plugin-repository-location>'
+
+call neobundle#end()
+```
 
 Common practice is to symlink a folder containing your custom configuration files as the `.vim/custom_config` folder.
 
