@@ -23,6 +23,8 @@
   NeoBundle "git://github.com/vim-scripts/matchit.zip"
   NeoBundle "git://github.com/vim-scripts/ruby-matchit.git"
   NeoBundle "git://github.com/christoomey/vim-tmux-navigator.git"
+  NeoBundle "git://github.com/alfredodeza/pytest.vim.git"
+  NeoBundle "git://github.com/davidhalter/jedi-vim"
 
  " Vim airline configs
   NeoBundle 'git://github.com/bling/vim-airline.git'
@@ -252,5 +254,4 @@
  call neobundle#end()
 
 " Python Completion"
-  NeoBundle "git://github.com/davidhalter/jedi-vim"
   autocmd FileType python setlocal completeopt-=preview
