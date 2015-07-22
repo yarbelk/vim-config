@@ -258,4 +258,4 @@ call neobundle#end()
  call neobundle#end()
 
 " Python Completion"
-  autocmd FileType python setlocal completeopt-=preview
+  autocmd FileType python set completeopt-=preview

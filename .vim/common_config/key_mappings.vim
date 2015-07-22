@@ -5,6 +5,11 @@
 " shortcut to save all
   nmap <Leader>ss :wa<cr>
 
+" Pytest
+  nmap <Leader>pf <Esc>:Pytest file versbose<CR>
+  nmap <Leader>pc <Esc>:Pytest class versbose<CR>
+  nmap <Leader>pm <Esc>:Pytest method versbose<CR>
+
 " close all other windows (in the current tab)
   nmap gW :only<cr>
 
