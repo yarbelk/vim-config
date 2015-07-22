@@ -255,7 +255,5 @@ call neobundle#end()
   nmap <Leader>rl :wa<CR> :call RunLastSpec()<CR>
   nmap <Leader>ra :wa<CR> :call RunAllSpecs()<CR>
 
- call neobundle#end()
-
 " Python Completion"
   autocmd FileType python set completeopt-=preview
