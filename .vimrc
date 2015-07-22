@@ -7,4 +7,7 @@ runtime! custom_config/*.vim
 " for git, add spell checking and automatic wrapping at 72 columns
 autocmd Filetype gitcommit setlocal spell textwidth=72
 
+colorscheme desert256
 nmap , <leader>
+
+colorscheme desertEx
