@@ -24,7 +24,6 @@ call neobundle#begin(expand('~/.vim/bundle/'))
   NeoBundle "git://github.com/vim-scripts/ruby-matchit.git"
   NeoBundle "git://github.com/christoomey/vim-tmux-navigator.git"
   NeoBundle "git://github.com/alfredodeza/pytest.vim.git"
-  NeoBundle "git://github.com/davidhalter/jedi-vim"
 
   NeoBundle 'git://github.com/bling/vim-airline.git'
   NeoBundle "git://github.com/Lokaltog/vim-easymotion.git"
