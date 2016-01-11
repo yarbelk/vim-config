@@ -55,6 +55,9 @@
 " don't blink the cursor
   set guicursor=a:blinkon0
 
+" highlight current line
+  set cursorline
+
 " show current line info (current/total)
   set ruler rulerformat=%=%l/%L
 
