@@ -68,6 +68,7 @@ call neobundle#end()
 
 
  " Vim airline configs
+  let g:airline_theme = 'dark'
   let g:airline_powerline_fonts = 1
   let g:airline_mode_map = {
       \ '__' : '-',
