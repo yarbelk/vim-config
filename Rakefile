@@ -4,6 +4,7 @@ require './lib/translation'
 
 NIX_FILES = [
   [ 'nvim', '~/.config/nvim'],
+  [ 'nvim', '~/.vim'],
   [ 'nvim/init.vim', '~/.vimrc'],
   [ '.gvimrc', '~/.gvimrc'],
 ]
