@@ -2,16 +2,11 @@ require 'rake'
 require './lib/installer'
 require './lib/translation'
 
-MAC_FILES =
-  { '.vimrc'           => '~/.vimrc',
-    '.gvimrc'          => '~/.gvimrc',
-    '.vim'             => '~/.vim' }
-
-WINDOW_FILES =
-  { '.vimrc'           => '~/_vimrc',
-    '.gvimrc'          => '~/_gvimrc',
-    '.vim'             => '~/vimfiles',
-    'windows/curl.cmd' => 'c:\RailsInstaller\Git\cmd\curl.cmd' }
+NIX_FILES = [
+  [ 'nvim', '~/.config/nvim'],
+  [ 'nvim/init.vim', '~/.vimrc'],
+  [ '.gvimrc', '~/.gvimrc'],
+]
 
 desc "Install vim configuration and plugin files"
 task :default do
@@ -24,11 +19,11 @@ task :default do
       else                      prompt_to_link_files(f)
     end
   end
-  Rake::Task['vundle'].execute
+  Rake::Task['nebundle'].execute
 end
 
 desc "Install neobundle for vim plugins"
-task :vundle do
+task :nebundle do
   target = "#{platform_files['.vim']}/bundle/neobundle.vim"
   Installer.git_clone('https://github.com/Shougo/neobundle.vim', target)
   puts "Running BundleInstall to install plugins...this will take a couple minutes."
@@ -37,7 +32,7 @@ task :vundle do
 end
 
 def platform_files
-  Installer.windows? ? WINDOW_FILES : MAC_FILES
+  NIX_FILES
 end
 
 def prompt_to_link_files(file)
