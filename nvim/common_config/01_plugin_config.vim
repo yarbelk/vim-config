@@ -22,28 +22,31 @@ call neobundle#begin(expand('~/.vim/bundle/'))
   NeoBundle "tpope/vim-surround.git"
   NeoBundle "tpope/vim-unimpaired.git"
 
-  NeoBundle "Lokaltog/vim-easymotion.git"
+"" Run your pytest magic.
   NeoBundle "alfredodeza/pytest.vim.git"
-  NeoBundle "amdt/vim-niji.git"
   NeoBundle "bling/vim-airline.git"
   NeoBundle "christoomey/vim-tmux-navigator.git"
+"" Nice lookups and competion
   NeoBundle "davidhalter/jedi-vim.git"
-  NeoBundle "derekwyatt/vim-scala.git"
+"" tab for completion
+  NeoBundle "ervandew/supertab.git"
+"" Tabularize your buffer
+  NeoBundle "godlygeek/tabular.git"
+"" Less css stuff
+  NeoBundle "groenewege/vim-less.git"
   NeoBundle "digitaltoad/vim-jade.git"
   NeoBundle "elixir-lang/vim-elixir.git"
-  NeoBundle "ervandew/supertab.git"
-  NeoBundle "godlygeek/tabular.git"
-  NeoBundle "groenewege/vim-less.git"
-  NeoBundle "guns/vim-clojure-static.git"
   NeoBundle "hdima/python-syntax.git"
-  NeoBundle 'Shougo/neosnippet'
+  NeoBundle "Shougo/neosnippet"
+"" Yay.
   NeoBundle "fatih/vim-go"
   NeoBundle "kchmck/vim-coffee-script.git"
   NeoBundle "kien/ctrlp.vim.git"
   NeoBundle "maba/vim-markdown-preview.git"
+"" Nice class view
   NeoBundle "majutsushi/tagbar.git"
-  NeoBundle "mattn/gist-vim.git"
   NeoBundle "mattn/webapi-vim.git"
+  NeoBundle "mattn/gist-vim.git"
   NeoBundle "michaeljsmith/vim-indent-object.git"
   NeoBundle "mustache/vim-mustache-handlebars.git"
   NeoBundle "oscarh/vimerl.git"
@@ -105,6 +108,10 @@ call neobundle#end()
     " respect the .gitignore
     let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . --cached --exclude-standard --others']
     let g:ctrlp_switch_buffer = '0' " Dont jump me to already open file in another buffer; let me have mulitple copies
+    "
+
+" Ruby
+    au BufNewFile,BufRead *.rb set filetype=ruby
 
 " Go
     au BufNewFile,BufRead *.go set filetype=go
@@ -116,7 +123,7 @@ call neobundle#end()
     au BufNewFile,BufRead *.less set filetype=less
 
 " Handlebars, Mustache, and Friends
-  au  BufNewFile,BufRead *.mustache,*.handlebars,*.hbs,*.hogan,*.hulk,*.hjs set filetype=html syntax=mustache | runtime! ftplugin/mustache.vim ftplugin/mustache*.vim ftplugin/mustache/*.vim
+    au  BufNewFile,BufRead *.mustache,*.handlebars,*.hbs,*.hogan,*.hulk,*.hjs set filetype=html syntax=mustache | runtime! ftplugin/mustache.vim ftplugin/mustache*.vim ftplugin/mustache/*.vim
 
 " Stylus
     au BufNewFile,BufRead *.styl set filetype=stylus
@@ -199,8 +206,10 @@ call neobundle#end()
 " gist-vim for quickly creating gists
     if has("mac")
       let g:gist_clip_command = 'pbcopy'
-    elseif has("unix")
+    elseif executable("xclip")
       let g:gist_clip_command = 'xclip -selection clipboard'
+    elseif executable("xsel")
+      let g:gist_clip_command = 'xsel --clipboard -i'
     endif
 
     let g:gist_detect_filetype = 1
@@ -211,14 +220,14 @@ call neobundle#end()
     map <Leader>h :GundoToggle<CR>
 
 
-" rails.vim, nuff' said
-    map <Leader>oc :Rcontroller<Space>
-    map <Leader>ov :Rview<Space>
-    map <Leader>om :Rmodel<Space>
-    map <Leader>oh :Rhelper<Space>
-    map <Leader>oj :Rjavascript<Space>
-    map <Leader>os :Rstylesheet<Space>
-    map <Leader>oi :Rintegration<Space>
+" rails.vim
+    au FileType ruby map <Leader>oc :Rcontroller<Space>
+    au FileType ruby map <Leader>ov :Rview<Space>
+    au FileType ruby map <Leader>om :Rmodel<Space>
+    au FileType ruby map <Leader>oh :Rhelper<Space>
+    au FileType ruby map <Leader>oj :Rjavascript<Space>
+    au FileType ruby map <Leader>os :Rstylesheet<Space>
+    au FileType ruby map <Leader>oi :Rintegration<Space>
 
 
 " surround for adding surround 'physics'
@@ -246,8 +255,8 @@ call neobundle#end()
   autocmd BufNewFile,BufRead *.scala set filetype=scala
 
 " Elixir plugin
-    au BufNewFile,BufRead *.ex set filetype=elixir
-    au BufNewFile,BufRead *.exs set filetype=elixir
+  au BufNewFile,BufRead *.ex set filetype=elixir
+  au BufNewFile,BufRead *.exs set filetype=elixir
 
 " Rust!
 
