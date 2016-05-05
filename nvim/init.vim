@@ -1,4 +1,4 @@
-set rtp+=~/.vim/bundle/neobundle.vim/
+set rtp+=~/.config/nvim/bundle/neobundle.vim/
 
 runtime! custom_preconfig/*.vim
 runtime! common_config/*.vim
