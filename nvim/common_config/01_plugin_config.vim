@@ -43,6 +43,8 @@ call neobundle#begin(expand('~/.vim/bundle/'))
   NeoBundle "kchmck/vim-coffee-script.git"
   NeoBundle "kien/ctrlp.vim.git"
   NeoBundle "maba/vim-markdown-preview.git"
+  NeoBundle "elmcast/elm-vim"
+
 "" Nice class view
   NeoBundle "majutsushi/tagbar.git"
   NeoBundle "mattn/webapi-vim.git"

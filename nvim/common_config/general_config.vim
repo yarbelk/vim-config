@@ -121,6 +121,10 @@ let vimclojure#ParenRainbow  = 1
 " keep track of the status bar highlight mode (optimization)
 let g:bar_mode = 0
 
+" enable elm formatting
+let g:elm_format_autosave = 1
+let g:elm_classic_highlighting = 1
+
 " change status line color depending on the state of the buffer
   function! ColorizeStatusLine(...)
     if a:0 && a:1 == "i" && g:bar_mode != -1
