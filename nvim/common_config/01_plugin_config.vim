@@ -1,77 +1,89 @@
 " Plugins are managed by NeoBundle. Once VIM is open run :NeoBundleInstall to
 " install plugins.
 
-call neobundle#begin(expand('~/.vim/bundle/'))
- " Let NeoBundle manage NeoBundle
- NeoBundleFetch 'Shougo/neobundle.vim'
+" Required:
+call dein#begin(expand('~/.config/nvim/plugins/'))
 
+" Let dein manage dein
+" Required:
+  call dein#add('Shougo/dein.vim')
+
+" Add or remove your plugins here:
 " Plugins requiring no additional configuration or keymaps
-  NeoBundle "tpope/vim-abolish.git"
-  NeoBundle "tpope/vim-classpath.git"
-  NeoBundle "tpope/vim-cucumber.git"
-  NeoBundle "tpope/vim-dispatch.git"
-  NeoBundle "tpope/vim-endwise.git"
-  NeoBundle "tpope/vim-fireplace.git"
-  NeoBundle "tpope/vim-fugitive.git"
-  NeoBundle "tpope/vim-git.git"
-  NeoBundle "tpope/vim-haml.git"
-  NeoBundle "tpope/vim-markdown.git"
-  NeoBundle "tpope/vim-rails.git"
-  NeoBundle "tpope/vim-rake.git"
-  NeoBundle "tpope/vim-repeat.git"
-  NeoBundle "tpope/vim-surround.git"
-  NeoBundle "tpope/vim-unimpaired.git"
+  call dein#add("tpope/vim-abolish.git")
+  call dein#add("tpope/vim-classpath.git")
+  call dein#add("tpope/vim-cucumber.git")
+  call dein#add("tpope/vim-dispatch.git")
+  call dein#add("tpope/vim-endwise.git")
+  call dein#add("tpope/vim-fireplace.git")
+  call dein#add("tpope/vim-fugitive.git")
+  call dein#add("tpope/vim-git.git")
+  call dein#add("tpope/vim-haml.git")
+  call dein#add("tpope/vim-markdown.git")
+  call dein#add("tpope/vim-rails.git")
+  call dein#add("tpope/vim-rake.git")
+  call dein#add("tpope/vim-repeat.git")
+  call dein#add("tpope/vim-surround.git")
+  call dein#add("tpope/vim-unimpaired.git")
 
 "" Run your pytest magic.
-  NeoBundle "alfredodeza/pytest.vim.git"
-  NeoBundle "bling/vim-airline.git"
-  NeoBundle "christoomey/vim-tmux-navigator.git"
-"" Nice lookups and competion
-  NeoBundle "davidhalter/jedi-vim.git"
+  call dein#add("alfredodeza/pytest.vim.git")
+  call dein#add("bling/vim-airline.git")
+  call dein#add("christoomey/vim-tmux-navigator.git")
 "" tab for completion
-  NeoBundle "ervandew/supertab.git"
+  call dein#add("ervandew/supertab.git")
 "" Tabularize your buffer
-  NeoBundle "godlygeek/tabular.git"
+  call dein#add("godlygeek/tabular.git")
 "" Less css stuff
-  NeoBundle "groenewege/vim-less.git"
-  NeoBundle "digitaltoad/vim-jade.git"
-  NeoBundle "elixir-lang/vim-elixir.git"
-  NeoBundle "hdima/python-syntax.git"
-  NeoBundle "Shougo/neosnippet"
+  call dein#add("groenewege/vim-less.git")
+  call dein#add("digitaltoad/vim-jade.git")
+  call dein#add("elixir-lang/vim-elixir.git")
+  call dein#add("hdima/python-syntax.git")
+  call dein#add('Shougo/neosnippet.vim')
+  call dein#add('Shougo/neosnippet-snippets')
+
 "" Yay.
-  NeoBundle "fatih/vim-go"
-  NeoBundle "kchmck/vim-coffee-script.git"
-  NeoBundle "kien/ctrlp.vim.git"
-  NeoBundle "maba/vim-markdown-preview.git"
-  NeoBundle "elmcast/elm-vim"
+  call dein#add("fatih/vim-go")
+  call dein#add("nsf/gocode", {'rtp': 'nvim/'})
+  call dein#add('Shougo/deoplete.nvim')
+  call dein#add('zchee/deoplete-go', {'build': 'make'})
+  call dein#add("kchmck/vim-coffee-script.git")
+  call dein#add("kien/ctrlp.vim.git")
+  call dein#add("maba/vim-markdown-preview.git")
+  call dein#add("elmcast/elm-vim")
 
 "" Nice class view
-  NeoBundle "majutsushi/tagbar.git"
-  NeoBundle "mattn/webapi-vim.git"
-  NeoBundle "mattn/gist-vim.git"
-  NeoBundle "michaeljsmith/vim-indent-object.git"
-  NeoBundle "mustache/vim-mustache-handlebars.git"
-  NeoBundle "oscarh/vimerl.git"
-  NeoBundle "pangloss/vim-javascript.git"
-  NeoBundle "rizzatti/dash.vim.git"
-  NeoBundle "rizzatti/funcoo.vim.git"
-  NeoBundle "rking/ag.vim.git"
-  NeoBundle "scrooloose/nerdtree.git"
-  NeoBundle "scrooloose/syntastic.git"
-  NeoBundle "sjl/gundo.vim.git"
-  NeoBundle "slim-template/vim-slim.git"
-  NeoBundle "tomtom/tcomment_vim.git"
-  NeoBundle "vim-ruby/vim-ruby.git"
-  NeoBundle "vim-scripts/L9.git"
-  NeoBundle "vim-scripts/ZoomWin.git"
-  NeoBundle "vim-scripts/matchit.zip"
-  NeoBundle "vim-scripts/paredit.vim"
-  NeoBundle "vim-scripts/ruby-matchit.git"
-  NeoBundle "wavded/vim-stylus.git"
-  NeoBundle "wting/rust.vim.git"
-  NeoBundle 'thoughtbot/vim-rspec'
-call neobundle#end()
+  call dein#add("majutsushi/tagbar.git")
+  call dein#add("mattn/webapi-vim.git")
+  call dein#add("mattn/gist-vim.git")
+  call dein#add("michaeljsmith/vim-indent-object.git")
+  call dein#add("mustache/vim-mustache-handlebars.git")
+  call dein#add("oscarh/vimerl.git")
+  call dein#add("pangloss/vim-javascript.git")
+  call dein#add("rizzatti/dash.vim.git")
+  call dein#add("rizzatti/funcoo.vim.git")
+  call dein#add("rking/ag.vim.git")
+  call dein#add("scrooloose/nerdtree.git")
+  call dein#add("scrooloose/syntastic.git")
+  call dein#add("sjl/gundo.vim.git")
+  call dein#add("slim-template/vim-slim.git")
+  call dein#add("tomtom/tcomment_vim.git")
+  call dein#add("vim-ruby/vim-ruby.git")
+  call dein#add("vim-scripts/L9.git")
+  call dein#add("vim-scripts/ZoomWin.git")
+  call dein#add("vim-scripts/matchit.zip")
+  call dein#add("vim-scripts/paredit.vim")
+  call dein#add("vim-scripts/ruby-matchit.git")
+  call dein#add("wavded/vim-stylus.git")
+  call dein#add("wting/rust.vim.git")
+  call dein#add("thoughtbot/vim-rspec")
+call dein#end()
 
+
+" Autocomplete magic
+" Use deoplete.
+let g:deoplete#enable_at_startup = 1
+set completeopt+=noselect
 
  " Vim airline configs
   let g:airline_theme = 'dark'
