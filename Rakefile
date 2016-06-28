@@ -20,15 +20,16 @@ task :default do
       else                      prompt_to_link_files(f)
     end
   end
-  Rake::Task['nebundle'].execute
+  Rake::Task['dein'].execute
 end
 
-desc "Install neobundle for vim plugins"
-task :nebundle do
-  target = "#{platform_files[0][1]}/bundle/neobundle.vim"
-  Installer.git_clone('https://github.com/Shougo/neobundle.vim', target)
-  puts "Running BundleInstall to install plugins...this will take a couple minutes."
-  `vim -e +NeoBundleInstall +qall`
+desc "Install dein for vim plugins"
+task :dein do
+  target = "#{platform_files[0][1]}/installer.sh"
+  Installer.get_file('https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh', target)
+  `sh #{target}`
+  puts "opening vim; this should install things. close it when its done (:q<cr>)"
+  `vim`
   puts "vim plugins installed."
 end
 

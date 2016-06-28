@@ -2,3 +2,6 @@ nvim/custom_config
 nvim/custom_preconfig
 nvim/.netrwhist
 nvim/spell
+installer.sh
+nvim/plugins
+nvim/repos

@@ -1,3 +1,4 @@
+require 'net/http'
 require 'fileutils'
 require 'rake/win32'
 
@@ -11,6 +12,19 @@ class Installer
 
   def self.windows?
     Rake::Win32.windows?
+  end
+
+  def self.get_file(url, target)
+    uri = URI.parse(url)
+    if File.exists?(target)
+      FileUtils.rm(target)
+    end
+    File.open(target, "w") do |save_file|
+      Net::HTTP.start(uri.host) do |http|
+        resp = http.request_get(uri.path)
+        save_file.write(resp.body)
+      end
+    end
   end
 
   def self.git_clone(repo, target)
