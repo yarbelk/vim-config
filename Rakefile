@@ -27,7 +27,7 @@ desc "Install dein for vim plugins"
 task :dein do
   target = "#{platform_files[0][1]}/installer.sh"
   Installer.get_file('https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh', target)
-  `sh #{target}`
+  `sh #{target} nvim/plugins/`
   puts "opening vim; this should install things. close it when its done (:q<cr>)"
   `vim`
   puts "vim plugins installed."

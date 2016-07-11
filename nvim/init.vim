@@ -1,7 +1,7 @@
 if &compatible
   set nocompatible
 endif
-set runtimepath^=~/.config/nvim/repos/github.com/Shougo/dein.vim
+set runtimepath^=~/.config/nvim/plugins/repos/github.com/Shougo/dein.vim
 
 runtime! custom_preconfig/*.vim
 runtime! common_config/*.vim
