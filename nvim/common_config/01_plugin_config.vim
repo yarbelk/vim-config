@@ -28,7 +28,7 @@ call dein#begin(expand('~/.config/nvim/plugins/'))
 
 "" Run your pytest magic.
   call dein#add("alfredodeza/pytest.vim.git")
-  call dein#add("bling/vim-airline.git")
+  call dein#add("vim-airline/vim-airline.git")
   call dein#add("christoomey/vim-tmux-navigator.git")
 "" tab for completion
   call dein#add("ervandew/supertab.git")
@@ -38,7 +38,18 @@ call dein#begin(expand('~/.config/nvim/plugins/'))
   call dein#add("groenewege/vim-less.git")
   call dein#add("digitaltoad/vim-jade.git")
   call dein#add("elixir-lang/vim-elixir.git")
+
+"" Python
   call dein#add("hdima/python-syntax.git")
+  call dein#add("davidhalter/jedi.git")
+  call dein#add("zchee/deoplete-jedi")
+
+"" Hashicorp
+  call dein#add("hashivim/vim-hashicorp-tools")
+  call dein#add("hashivim/vim-nomadproject")
+  call dein#add("fatih/vim-hclfmt")
+
+"" Snippits
   call dein#add('Shougo/neosnippet.vim')
   call dein#add('Shougo/neosnippet-snippets')
 
@@ -48,7 +59,7 @@ call dein#begin(expand('~/.config/nvim/plugins/'))
   call dein#add('Shougo/deoplete.nvim')
   call dein#add('zchee/deoplete-go', {'build': 'make'})
   call dein#add("kchmck/vim-coffee-script.git")
-  call dein#add("kien/ctrlp.vim.git")
+  call dein#add("Shougo/denite.nvim.git")
   call dein#add("maba/vim-markdown-preview.git")
   call dein#add("elmcast/elm-vim")
 
@@ -64,7 +75,7 @@ call dein#begin(expand('~/.config/nvim/plugins/'))
   call dein#add("rizzatti/funcoo.vim.git")
   call dein#add("rking/ag.vim.git")
   call dein#add("scrooloose/nerdtree.git")
-  call dein#add("scrooloose/syntastic.git")
+  call dein#add("w0rp/ale.git")
   call dein#add("sjl/gundo.vim.git")
   call dein#add("slim-template/vim-slim.git")
   call dein#add("tomtom/tcomment_vim.git")
@@ -113,15 +124,21 @@ set completeopt+=noselect
     nmap <Leader>qa <Plug>DashGlobalSearch
 
 
-" CtrlP
-    nnoremap <Leader>b :<C-U>CtrlPBuffer<CR>
-    nnoremap <Leader>t :<C-U>CtrlP<CR>
-    nnoremap <Leader>T :<C-U>CtrlPTag<CR>
-    nnoremap <C-p> :<C-U>CtrlP<CR>
+" Denite
+    call denite#custom#var('grep', 'command', ['ag'])
+    call denite#custom#var('grep', 'default_opts',
+                    \ ['-i', '--vimgrep'])
+    call denite#custom#var('grep', 'recursive_opts', [])
+    call denite#custom#var('grep', 'pattern_opt', [])
+    call denite#custom#var('grep', 'separator', ['--'])
+    call denite#custom#var('grep', 'final_opts', [])
+
+    nnoremap <Leader>b :<C-U>Denite buffer<CR>
+    nnoremap <Leader>t :<C-U>Denite file_rec buffer<CR>
+    nnoremap <leader>T :<C-U>Denite grep<CR>
+    nnoremap <C-p> :<C-U>Denite file_rec<CR>
 
     " respect the .gitignore
-    let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . --cached --exclude-standard --others']
-    let g:ctrlp_switch_buffer = '0' " Dont jump me to already open file in another buffer; let me have mulitple copies
     "
 
 " Ruby
@@ -208,13 +225,13 @@ set completeopt+=noselect
     vmap <C-Down> ]egv
 
 
-" Syntastic for catching syntax errors on save
-    let g:syntastic_enable_signs=1
-    let g:syntastic_quiet_messages = {'level': 'warning'}
-    " syntastic is too slow for haml and sass
-    let g:syntastic_mode_map = { 'mode': 'active',
-                               \ 'active_filetypes': [],
-                               \ 'passive_filetypes': ['haml','scss','sass'] }
+" Ale for catching syntax errors on save
+    " let g:syntastic_enable_signs=1
+    " let g:syntastic_quiet_messages = {'level': 'warning'}
+    " " syntastic is too slow for haml and sass
+    " let g:syntastic_mode_map = { 'mode': 'active',
+    "                            \ 'active_filetypes': [],
+    "                            \ 'passive_filetypes': ['haml','scss','sass'] }
 
 
 " gist-vim for quickly creating gists

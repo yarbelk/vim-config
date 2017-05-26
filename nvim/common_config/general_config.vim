@@ -72,7 +72,7 @@
       return ''
     endif
   endfunction
-  set statusline=[%n]\ %<%.99f\ %h%w%m%r%{ETry('CapsLockStatusline')}%y%{ETry('rails#statusline')}%{ETry('fugitive#statusline')}%#ErrorMsg#%*%=%-16(\ %l,%c-%v\ %)%P
+  set statusline=[%n]\ %<%.99f\ %h%w%m%r%{ETry('CapsLockStatusline')}%y%{ETry('fugitive#statusline')}%#ErrorMsg#%*%=%-16(\ %l,%c-%v\ %)%P
 
 " When lines are cropped at the screen bottom, show as much as possible
   set display=lastline
@@ -105,6 +105,11 @@
 
 " Thorfile, Rakefile, Vagrantfile, and Gemfile are Ruby
   au BufRead,BufNewFile {Gemfile,Rakefile,Vagrantfile,Thorfile,config.ru} set ft=ruby
+
+" restructured text headders
+  au FileType rst nmap <leader>H yypVr=
+  au FileType rst nmap <leader>h yypVr-
+  au FileType rst nmap <leader>j yypVr~
 
 " hb is handlebars
   au BufNewFile,BufRead *.hb set ai filetype=handlebars
