@@ -62,6 +62,7 @@ call dein#begin(expand('~/.config/nvim/plugins/'))
   call dein#add("Shougo/denite.nvim.git")
   call dein#add("maba/vim-markdown-preview.git")
   call dein#add("elmcast/elm-vim")
+  call dein#add("jodosha/vim-godebug")
 
 "" Nice class view
   call dein#add("majutsushi/tagbar.git")
@@ -315,3 +316,6 @@ set completeopt+=noselect
  let g:go_fmt_command = "goimports"
  let g:syntastic_check_on_open = 1
  let g:syntastic_go_checkers = ['go','golint','gotype']
+
+ " A.L.E (ale)
+let g:ale_python_pylint_options = "--max-line-length=120"
