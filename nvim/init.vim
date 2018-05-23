@@ -16,4 +16,4 @@ autocmd Filetype gitcommit setlocal spell textwidth=72
 
 nmap , <leader>
 
-colorscheme molokai
+colorscheme wombat256
