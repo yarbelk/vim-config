@@ -1,0 +1,34 @@
+if &compatible
+  set nocompatible
+endif
+set runtimepath+={datapath}/repos/github.com/Shougo/dein.vim
+
+
+runtime! custom_preconfig/*.vim
+runtime! common_config/*.vim
+runtime! custom_config/*.vim
+
+if dein#check_install()
+  call dein#install()
+endif
+
+if dein#load_state('{datapath}')
+  call dein#begin('{datapath}')
+
+  " Let dein manage dein
+  " Required:
+  call dein#add('{datapath}/repos/github.com/Shougo/dein.vim')
+
+
+  " Required:
+  call dein#end()
+  call dein#save_state()
+endif
+
+" Required:
+filetype plugin indent on
+syntax enable
+
+nmap , <leader>
+
+colorscheme wombat256
