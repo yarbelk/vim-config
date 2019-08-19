@@ -5,3 +5,5 @@ nvim/spell
 installer.sh
 nvim/plugins
 nvim/repos
+nvim/init.vim
+nvim/common_config/01_plugin_config.vim

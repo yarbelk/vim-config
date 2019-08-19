@@ -58,7 +58,7 @@ if dein#load_state('{datapath}')
 
 "" Yay.
   call dein#add("fatih/vim-go")
-  call dein#add("nsf/gocode", {'rtp': 'nvim/'})
+  call dein#add("nsf/gocode", {{'rtp': 'nvim/'}})
   call dein#add('Shougo/deoplete.nvim')
   " call dein#add("kchmck/vim-coffee-script.git")
   call dein#add("Shougo/denite.nvim.git")
@@ -114,7 +114,7 @@ set completeopt+=noselect
  " Vim airline configs
   let g:airline_theme = 'dark'
   let g:airline_powerline_fonts = 1
-  let g:airline_mode_map = {
+  let g:airline_mode_map = {{
       \ '__' : '-',
       \ 'n'  : 'N',
       \ 'i'  : 'I',
@@ -126,7 +126,7 @@ set completeopt+=noselect
       \ 's'  : 'S',
       \ 'S'  : 'S',
       \ '' : 'S',
-      \ }
+      \ }}
 
 " Easy motion config
 
@@ -242,11 +242,11 @@ set completeopt+=noselect
 
 " Ale for catching syntax errors on save
     " let g:syntastic_enable_signs=1
-    " let g:syntastic_quiet_messages = {'level': 'warning'}
+    " let g:syntastic_quiet_messages = {{'level': 'warning'}}
     " " syntastic is too slow for haml and sass
-    " let g:syntastic_mode_map = { 'mode': 'active',
+    " let g:syntastic_mode_map = {{ 'mode': 'active',
     "                            \ 'active_filetypes': [],
-    "                            \ 'passive_filetypes': ['haml','scss','sass'] }
+    "                            \ 'passive_filetypes': ['haml','scss','sass'] }}
 
 
 " gist-vim for quickly creating gists
@@ -278,7 +278,7 @@ set completeopt+=noselect
 
 " surround for adding surround 'physics'
     " # to surround with ruby string interpolation
-    let g:surround_35 = "#{\r}"
+    let g:surround_35 = "#{{\r}}"
     " - to surround with no-output erb tag
     let g:surround_45 = "<% \r %>"
     " = to surround with output erb tag
@@ -307,7 +307,7 @@ set completeopt+=noselect
 " Rust!
 
 " Easy async RSpec running
-  let g:rspec_command = "Dispatch rspec --format=progress --no-profile {spec}"
+  let g:rspec_command = "Dispatch rspec --format=progress --no-profile {{spec}}"
   nmap <Leader>rc :wa<CR> :call RunCurrentSpecFile()<CR>
   nmap <Leader>rn :wa<CR> :call RunNearestSpec()<CR>
   nmap <Leader>rl :wa<CR> :call RunLastSpec()<CR>
