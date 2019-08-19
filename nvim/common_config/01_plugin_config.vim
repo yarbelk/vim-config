@@ -29,6 +29,7 @@ call dein#begin(expand('~/.config/nvim/plugins/'))
 "" Run your pytest magic.
   call dein#add("alfredodeza/pytest.vim.git")
   call dein#add("vim-airline/vim-airline.git")
+
   call dein#add("christoomey/vim-tmux-navigator.git")
 "" tab for completion
   call dein#add("ervandew/supertab.git")
@@ -40,6 +41,7 @@ call dein#begin(expand('~/.config/nvim/plugins/'))
   call dein#add("elixir-lang/vim-elixir.git")
 
 "" Python
+  call dein#add("ambv/black.git")
   call dein#add("hdima/python-syntax.git")
   call dein#add("davidhalter/jedi.git")
   call dein#add("zchee/deoplete-jedi")
@@ -57,17 +59,19 @@ call dein#begin(expand('~/.config/nvim/plugins/'))
   call dein#add("fatih/vim-go")
   call dein#add("nsf/gocode", {'rtp': 'nvim/'})
   call dein#add('Shougo/deoplete.nvim')
-  call dein#add('zchee/deoplete-go', {'build': 'make'})
-  call dein#add("kchmck/vim-coffee-script.git")
+  " call dein#add("kchmck/vim-coffee-script.git")
   call dein#add("Shougo/denite.nvim.git")
-  call dein#add("maba/vim-markdown-preview.git")
-  call dein#add("elmcast/elm-vim")
+  " call dein#add("maba/vim-markdown-preview.git")
+  " call dein#add("elmcast/elm-vim")
   call dein#add("jodosha/vim-godebug")
+
+"" GraphQL
+  call dein#add("jparise/vim-graphql.git")
 
 "" Nice class view
   call dein#add("majutsushi/tagbar.git")
-  call dein#add("mattn/webapi-vim.git")
-  call dein#add("mattn/gist-vim.git")
+  " call dein#add("mattn/webapi-vim.git")
+  " call dein#add("mattn/gist-vim.git")
   call dein#add("michaeljsmith/vim-indent-object.git")
   call dein#add("mustache/vim-mustache-handlebars.git")
   call dein#add("oscarh/vimerl.git")
@@ -78,7 +82,7 @@ call dein#begin(expand('~/.config/nvim/plugins/'))
   call dein#add("scrooloose/nerdtree.git")
   call dein#add("w0rp/ale.git")
   call dein#add("sjl/gundo.vim.git")
-  call dein#add("slim-template/vim-slim.git")
+  " call dein#add("slim-template/vim-slim.git")
   call dein#add("tomtom/tcomment_vim.git")
   call dein#add("vim-ruby/vim-ruby.git")
   call dein#add("vim-scripts/L9.git")
@@ -87,8 +91,12 @@ call dein#begin(expand('~/.config/nvim/plugins/'))
   call dein#add("vim-scripts/paredit.vim")
   call dein#add("vim-scripts/ruby-matchit.git")
   call dein#add("wavded/vim-stylus.git")
-  call dein#add("wting/rust.vim.git")
-  call dein#add("thoughtbot/vim-rspec")
+  call dein#add('rust-lang/rust.vim')
+  " call dein#add("thoughtbot/vim-rspec")
+  call dein#add("davidoc/taskpaper.vim")
+
+  " EBNF
+  call dein#add("vim-scripts/ebnf.vim")
 call dein#end()
 
 
@@ -305,7 +313,7 @@ set completeopt+=noselect
 " Go
  au FileType go nmap <leader>r <Plug>(go-run)
  au FileType go nmap <leader>b <Plug>(go-build)
- au FileType go nmap <leader>t <Plug>(go-test)
+ ""au FileType go nmap <leader>t <Plug>(go-test)
  au FileType go nmap <leader>c <Plug>(go-coverage)
  let g:go_highlight_functions = 1
  let g:go_highlight_methods = 1
@@ -316,6 +324,9 @@ set completeopt+=noselect
  let g:go_fmt_command = "goimports"
  let g:syntastic_check_on_open = 1
  let g:syntastic_go_checkers = ['go','golint','gotype']
+
+ " Black (python)
+  autocmd BufWritePre *.py execute ':Black'
 
  " A.L.E (ale)
 let g:ale_python_pylint_options = "--max-line-length=120"
