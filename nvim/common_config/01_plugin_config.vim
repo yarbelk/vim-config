@@ -2,11 +2,12 @@
 " install plugins.
 
 " Required:
-call dein#begin(expand('~/.config/nvim/plugins/'))
+if dein#load_state('/home/james/.local/share/dein')
+  call dein#begin('/home/james/.local/share/dein')
 
 " Let dein manage dein
 " Required:
-  call dein#add('Shougo/dein.vim')
+  call dein#add('/home/james/.local/share/dein/repos/github.com/Shougo/dein.vim')
 
 " Add or remove your plugins here:
 " Plugins requiring no additional configuration or keymaps
@@ -97,8 +98,13 @@ call dein#begin(expand('~/.config/nvim/plugins/'))
 
   " EBNF
   call dein#add("vim-scripts/ebnf.vim")
-call dein#end()
+  call dein#end()
+  call dein#save_state()
+endif
 
+if dein#check_install()
+  call dein#install()
+endif
 
 " Autocomplete magic
 " Use deoplete.
