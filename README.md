@@ -1,45 +1,59 @@
-# Pivotal-sg Vim Config
+# ~Pivotal-sg~/~Neo~/~Pivotal-sg~ Yarbelk's Vim Config
 
-You should give it a try.
+You should give it a try...
+
+This is a multi-generational vim config that started as an old PivotalLabs Singapore config, and was passed through to Neo.
+Then back to Pivotal, Then forked and (I, yarbelk) have heavily reworked a bunch of things in it.
 
 ## Pre-requisites
 
-This config is build primarily to work with neovim, but should work nicely with MacVim and normal vim as well.
+This config is build primarily to work with neovim.  It isn't really tested yet with macs... and I don't remember the details for setup there.
+also: you need xcopy, xsel or pbcopy.
+
+## Compat
+
+works well with tmux
 
 ## Font Requirement
-This vim configuration requires one of the Powerline fonts
+
+This vim configuration requires one of the Powerline fonts (THIS IS OUT OF DATE: GOOGLE THE FONTS)
 [https://github.com/Lokaltog/powerline-fonts](https://github.com/Lokaltog/powerline-fonts)
 
 ## Install
 
-1. `git clone git@github.com:neo/vim-config.git`
+0. `install python3 and `pip3 install invoke` (or `pip install invoke`, or whatever your system is set up for
+1. `git clone git@github.com:yarbelk/vim-config.git`
 2. `cd vim-config`
-3. `rake` (This will symlink the necessary files to your home directory, asking for permission before clobbering anything.)
-4. `vim`
-5. `:NeoBundleClean` (if you have previously used this Vim config)
-6. `:NeoBundleInstall` (This will clone and install all of the plugins from github.)
+3. `invoke install`
 
 ## Customizing
 
-Customizations can be added to the folder `.vim/custom_preconfig/` or `.vim/custom_config/`
+This makes use of the XDG folders (`.config/nvim` and `.local/share/` etc).  I assume the existance of this stuff.
+Customizations can be added to the folder `.config/nvim/custom_preconfig/` or `.cofig/nvim/custom_config/`
 
 * Any files with a `.vim` extension in that folder will be loaded when running all versions of `vim`.
-* Any files with a `.gvim` extension in that folder will be loaded when running a graphical version of `vim`.
 
 The custom_preconfig settings are loaded prior to the common config. A common usecase for this is to reset mapleader.  Most of the rest of the customizations are placed in custom_config.
 
-You can add custom plugins by registering them in a `.vim` file in the custom_config folder with the following syntax, and then performing steps 3 & 4 from the install steps above.
+You can add custom plugins by registering them in a `.vim` file in the custom_config folder with the following syntax. a quick reload will get this all installed.
 
 ```vim
-" Custom plugins must be registered within a neobundle#append()/neobundle#end() block
-call neobundle#append()
+if dein#load_state('/home/james/.local/share/dein')
+  call dein#begin('/home/james/.local/share/dein')
 
-NeoBundle '<plugin-repository-location>'
+  call dein#add("githubusername/project.git")
 
-call neobundle#end()
+  call dein#end()
+  call dein#save_state()
+endif
 ```
 
+Note: I never tried to manage multiple dein blocks...
+
 Common practice is to symlink a folder containing your custom configuration files as the `.vim/custom_config` folder.
+
+Note: I have changed things a lot since this was accurate.  things like Ale, jedi, go stuff.
+most of this was written with ruby/rails and macs in mind and i don't do that any more.
 
 ## Key mappings (remember case matters!)
 
@@ -67,19 +81,15 @@ Common practice is to symlink a folder containing your custom configuration file
 * `<leader>d` - delete all buffers
 * `<tab>` - match bracket pairs in normal and visual mode
 
-* `<C-w-j>` - move one buffer down
-* `<C-w-k>` - move one buffer up
-* `<C-w-h>` - move one buffer left
-* `<C-w-l>` - move one buffer right
+* `<C-j>` - move one buffer down
+* `<C-k>` - move one buffer up
+* `<C-h>` - move one buffer left
+* `<C-l>` - move one buffer right
 
 * `shift + up-arrow` - make horizontal split larger
 * `shift + down-arrow` - make horizontal split smaller
 * `shift + left-arrow` - make vertical split smaller
 * `shift + right-arrow` - make vertical split larger
-
-#### Ruby key mappings
-
-* `<C-l>` - insert a `=>` surrounded by spaces
 
 #### Rails key mappings
 
@@ -87,22 +97,13 @@ Common practice is to symlink a folder containing your custom configuration file
 * `gr` - jump to routes file
 * `gm` - jump to Gemfile
 
-#### Macros (from within insert mode type abbreviation followed by punctuation or space)
+## denite
 
-* `Lidsa` - insert some lorem ipsum text
-* `rdebug` - insert ruby specfic debugger statement
-
-## CtrlP
+... kinda borked right now
 
 Provides convenient ways to quickly reach the
 buffer/file/command/bookmark/tag you want. CtrlP searches with the
 fuzzy/partial pattern to which it converted an entered pattern.
-
-* `<leader>t` - fuzzy find files
-* `<leader>b` - fuzzy find open buffers
-* `<leader>T` - use fuzzy finder to navigate via tags instead of built-in tag navigation
-* `<C-j>` - open selected item in window in horizontal split
-* `<C-k>` - open selected item in vertical split
 
 ## Unimpaired
 
@@ -113,9 +114,10 @@ Utility functions for working with lines, files, and elements.
 * `<C-Up>` - Move lines up through a file (works in normal or visual mode, and multiple lines)
 * `<C-Down>` - Move lines down through a file (works in normal or visual mode, and multiple lines)
 
-## Syntastic
+## Ale
 
-Syntastic is a syntax checking plugin that runs buffers through external syntax
+... (need to update for ale stuff)
+~Syntastic~Ale is a syntax checking plugin that runs buffers through external syntax
 checkers as they are saved and opened. If syntax errors are detected, the user
 is notified and is happy because they didn't have to compile their code or
 execute their script to find them.
@@ -276,17 +278,6 @@ indent. Text objects work inside of visual mode, and with `c` (change),
 `d` (delete) and `y` (yank). For instance, try going into a method in
 normal mode, and type `v ii`. Then repeat `ii`.
 
-## text-object-ruby-block
-
-When textobj-rubyblock is installed you will gain two new text objects,
-which are triggered by `ar` and `ir` respectively. These follow Vim convention,
-so that `ar` selects all of a ruby block, and `ir` selects the inner portion
-of a rubyblock.
-
-In ruby, a block is always closed with the end keyword. Ruby blocks may
-be opened using one of several keywords, including module, class, def, if,
-and do.
-
 ## surround
 
 Surround allows you to modify "surroundings" around the current text.
@@ -295,8 +286,9 @@ For instance, if the cursor was inside `"foo bar"`, you could type
 
 There's a lot more; check it out at `:help surround`
 
-## SuperTab
+## ~SuperTab~ deoplete
 
+* TODO: redo for deoplete
 In insert mode, start typing something and hit `<TAB>` to tab-complete
 based on the current context.
 
@@ -328,14 +320,6 @@ Improves `vim` ability to jump back and forth between matching pairs of
 opening and ending items with `%`.
 
 
-## Gist-vim
-
-Nice [gist integration](https://github.com/mattn/gist-vim) by mattn.
-Requires exporting your `GITHUB_TOKEN` and `GITHUB_USER` as environment
-variables or setup your [GitHub token config](http://help.github.com/git-email-settings/).
-
-Try `:Gist`, `:Gist -p` and visual blocks.
-
 ## ZoomWin
 
 When working with split windows, ZoomWin lets you zoom into a window and
@@ -361,6 +345,12 @@ HTML, and opens it in your default browser.
 
 Ships with a few additional syntaxes:
 
+* golang
+* python
+* HCL
+* graphql
+* rust
+* restructured text
 * Markdown (bound to \*.markdown, \*.md, and \*.mk)
 * Haml (bound to \*.haml)
 * Sass (bound to \*.sass)
@@ -390,8 +380,8 @@ Use `:color vibrantink` to switch to a color scheme.
 
 We have a shortcut to search the entire current working directory for a given query.
 
-`g/` will result in `:Ack! ` and you type in your query
-`g*` will result in `:Ack! <word>` depending on the location of your cursor.
+`g/` will result in `:Ag! ` and you type in your query
+`g*` will result in `:Ag! <word>` depending on the location of your cursor.
 
 For example, if I place my cursor on the word "foo" then type `g*` it will return `:Ack! -w foo`
 
@@ -399,11 +389,6 @@ This search functionality might not work until you install Ack or Ag. You can in
 
 ## Powerline Fonts
 
-If you would like to use powerline fonts for vim and you use iTerm, make sure to set your Non ASCII Font in the iTerm settings.
+If you would like to use powerline fonts for vim and you use (any reasonable term), make sure to set your Non ASCII Font in the iTerm settings.
 
 ## Contributing
-
-If you are going to contribute to our config, please make sure you are not overriding any common defaults.
-Also remember that we have a custom_config directory if you want to make a change for just yourself.
-
-All PRs **must** be reviewed by at least one other person before being merged.

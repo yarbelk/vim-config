@@ -43,7 +43,7 @@ def install_dein(
         plugin_fd.write(render_plugin_file(data_dir))
 
     print("Running vim to setup")
-    c.run("nvim -c echom 'hello world'")
+    c.run("nvim -c :UpdateRemotePlugins")
 
 
 @task(pre=[install_neovim], post=[install_dein], help={"nvim": "install nvim as well"})
